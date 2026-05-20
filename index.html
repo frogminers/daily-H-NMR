@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily H-NMR Pure Demo</title>
+    <title>JSME Fixed Demo</title>
     
     <script type="text/javascript" src="https://jsme.cloud.chemdoodle.com/jsme/jsme.nocache.js"></script>
 
@@ -34,9 +34,20 @@
     <div id="editor-container"></div>
 
     <script>
-        // Because we are using the cloud version, we do not need the document.jsmeAppletCodebase line anymore!
+        // This function runs automatically, but now it acts as a smart checker
         function jsmeOnLoad() {
-            new JSME.JSME("editor-container", "100%", "100%");
+            // We check if the 'JSME' object actually exists yet (like checking if a key is in a dict)
+            if (typeof JSME !== 'undefined') {
+                
+                // If it exists, render the builder immediately!
+                new JSME.JSME("editor-container", "100%", "100%");
+                console.log("Success! JSME object detected and rendered.");
+                
+            } else {
+                // If it's not ready yet, wait 100 milliseconds and check again
+                console.log("JSME engine is booting up... retrying shortly.");
+                setTimeout(jsmeOnLoad, 100);
+            }
         }
     </script>
 
