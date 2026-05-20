@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSME Pure Demo</title>
+    <title>Daily H-NMR Pure Demo</title>
     
-    <script type="text/javascript" src="jsme/jsme.nocache.js"></script>
+    <script type="text/javascript" src="https://jsme.cloud.chemdoodle.com/jsme/jsme.nocache.js"></script>
 
     <style>
         body {
@@ -34,11 +34,8 @@
     <div id="editor-container"></div>
 
     <script>
+        // Because we are using the cloud version, we do not need the document.jsmeAppletCodebase line anymore!
         function jsmeOnLoad() {
-            // Force JSME to find its background assets inside your subfolders
-            document.jsmeAppletCodebase = "jsme/";
-            
-            // Render the builder panel
             new JSME.JSME("editor-container", "100%", "100%");
         }
     </script>
