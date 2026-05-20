@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My First Webpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSME Test Page</title>
+
+    <script type="text/javascript" src="jsme/jsme.nocache.js"></script>
+
+    <style>
+        body {
+            background-color: #121212;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* This container holds the editor canvas */
+        #editor-container {
+            width: 100%;
+            max-width: 600px;
+            height: 450px;
+            background-color: #ffffff;
+            border: 4px solid #333;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+
+    <div id="editor-container"></div>
+
+    <script>
+        // This function must be named exactly jsmeOnLoad
+        function jsmeOnLoad() {
+            new JSME.JSME("editor-container", "100%", "100%");
+            console.log("Editor has loaded successfully.");
+        }
+    </script>
+
 </body>
 </html>
