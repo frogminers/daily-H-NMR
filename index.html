@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSME Fixed Demo</title>
+    <title>JSME Local Demo</title>
     
-    <script type="text/javascript" src="https://jsme.cloud.chemdoodle.com/jsme/jsme.nocache.js"></script>
+    <script type="text/javascript">
+        // This tells JSME exactly where its subfolders are BEFORE the script even runs
+        document.jsmeAppletCodebase = "jsme/";
+    </script>
+
+    <script type="text/javascript" src="jsme/jsme.nocache.js"></script>
 
     <style>
         body {
@@ -34,19 +39,13 @@
     <div id="editor-container"></div>
 
     <script>
-        // This function runs automatically, but now it acts as a smart checker
+        // This function will now fire smoothly because the folder path was already set above
         function jsmeOnLoad() {
-            // We check if the 'JSME' object actually exists yet (like checking if a key is in a dict)
             if (typeof JSME !== 'undefined') {
-                
-                // If it exists, render the builder immediately!
                 new JSME.JSME("editor-container", "100%", "100%");
-                console.log("Success! JSME object detected and rendered.");
-                
             } else {
-                // If it's not ready yet, wait 100 milliseconds and check again
-                console.log("JSME engine is booting up... retrying shortly.");
-                setTimeout(jsmeOnLoad, 100);
+                // If the background scripts take a moment, retry safely
+                setTimeout(jsmeOnLoad, 50);
             }
         }
     </script>
